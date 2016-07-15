@@ -1,0 +1,25 @@
+<!--
+  Generated template for the PlacePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <header-content title={{selectedVideo.name}} backEnabled={{true}} (onBack)="onClickBack()"></header-content>
+</ion-header>
+
+<ion-menu [content]="content" side="right">
+
+  <ion-toolbar>
+    <ion-title>Hello {{email}}</ion-title>
+  </ion-toolbar>
+
+  <ion-content padding>
+    <button full danger (click)="logout()">Logout</button>
+  </ion-content>
+</ion-menu>
+
+
+<ion-content #content>
+  <video controls src={{selectedVideo.url}} autoplay loop webkit-playsinline></video>
+</ion-content>
