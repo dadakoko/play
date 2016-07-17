@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Endpoints} from "../endpoints/endpoints";
 import {Video} from "../../models/video.model";
@@ -37,7 +36,7 @@ export class Videos {
 
   getVideoById(id){
     let selected = null
-    this.data.map((video)=>{
+    this.data.data.map((video)=>{
       if(video.id==id) selected = video; return selected;
     })
     return selected

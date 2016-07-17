@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <header-content title={{selectedVideo.name}} backEnabled={{true}} (onBack)="onClickBack()"></header-content>
+  <header-content title={{selectedVideo.attributes.title}} backEnabled={{true}} (onBack)="onClickBack()"></header-content>
 </ion-header>
 
 <ion-menu [content]="content" side="right">
@@ -21,5 +21,5 @@
 
 
 <ion-content #content>
-  <video controls src={{selectedVideo.url}} autoplay loop webkit-playsinline></video>
+  <video controls src={{selectedVideo.attributes.url}} autoplay loop webkit-playsinline></video>
 </ion-content>

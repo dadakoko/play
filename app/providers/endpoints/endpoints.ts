@@ -21,7 +21,7 @@ export class Endpoints {
   }
 
   getVideos(){
-    return this.API_PATH + "/user/places"
+    return this.API_PATH + "/videos"
   }
 
 }
