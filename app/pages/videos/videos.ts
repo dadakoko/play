@@ -16,6 +16,7 @@ import {Auth} from "../../providers/auth/auth";
 export class VideosPage {
 
   items:any = []
+  username:string;
 
   /** Not normally mandatory but create bugs if ommited. **/
   static get parameters() {
@@ -24,7 +25,8 @@ export class VideosPage {
   constructor(private nav: NavController, private routes:Routes, private videosProvider:VideosProvider, private auth:Auth) {
     this.videosProvider.load().then((data)=>{
       this.items = data.data;
-    })
+    });
+    this.username = auth.user.username;
   }
 
   selectItem(id){

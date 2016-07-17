@@ -19,30 +19,20 @@ export class VideoPage {
 
   selectedVideo:any;
 
-  email:string;
-
-
   /** Not normally mandatory but create bugs if ommited. **/
   static get parameters() {
-    return [[NavController],[NavParams], [Routes],[VideosProvider], [Auth]];
+    return [[NavController],[NavParams], [Routes],[VideosProvider]];
   }
-  constructor(private nav: NavController, private params: NavParams, private routes:Routes, private videoProvider:VideosProvider, private auth:Auth) {
+  constructor(private nav: NavController, private params: NavParams, private routes:Routes, private videoProvider:VideosProvider) {
     const selectedId = params.data.id;
     this.selectedVideo = videoProvider.getVideoById(selectedId)
     let url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     //this.selectedVideo = {name:"video bla",description:"c est bla",url:url};
     this.selectedVideo.attributes.url = url;
-    this.email = auth.user.email;
-
   }
 
   onClickBack(){
     this.nav.setRoot(this.routes.getPage(this.routes.VIDEOS))
-  }
-
-  logout(){
-    this.auth.logout()
-    this.nav.setRoot(this.routes.getRootPage())
   }
 
 }

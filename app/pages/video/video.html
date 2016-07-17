@@ -8,18 +8,6 @@
   <header-content title={{selectedVideo.attributes.title}} backEnabled={{true}} (onBack)="onClickBack()"></header-content>
 </ion-header>
 
-<ion-menu [content]="content" side="right">
-
-  <ion-toolbar>
-    <ion-title>Hello {{email}}</ion-title>
-  </ion-toolbar>
-
-  <ion-content padding>
-    <button full danger (click)="logout()">Logout</button>
-  </ion-content>
-</ion-menu>
-
-
-<ion-content #content>
+<ion-content>
   <video controls src={{selectedVideo.attributes.url}} autoplay loop webkit-playsinline></video>
 </ion-content>
