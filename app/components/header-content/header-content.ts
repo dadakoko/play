@@ -19,7 +19,7 @@ export class HeaderContent {
 
   constructor() {
   }
-  
+
   ngOnInit() {
     this.showBack = this.backEnabled;
   }

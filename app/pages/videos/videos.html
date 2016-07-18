@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
- <header-content title="My videos" backEnabled={{false}}></header-content>
+ <header-content title="My videos"></header-content>
 </ion-header>
 
 <ion-menu [content]="content" side="right">
@@ -14,6 +14,12 @@
     <ion-title>Hello {{username}}</ion-title>
   </ion-toolbar>
 
+  <ion-list>
+    <ion-item (click)="addVideo()">
+      New Video
+    </ion-item>
+  </ion-list>
+
   <ion-content padding>
     <button full danger (click)="logout()">Logout</button>
   </ion-content>
@@ -21,12 +27,13 @@
 
 <ion-content padding #content>
   <ion-list>
-    <ion-item  *ngFor="let item of items" (click)="selectItem(item.id)">
-      <ion-avatar item-left>
-       <!-- <img src="{{item.image}}">-->
-      </ion-avatar>
+    <ion-item *ngFor="let item of items" >
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-totoro.png">
+      </ion-thumbnail>
       <h2>{{item.attributes.title}}</h2>
       <p>{{item.attributes.url}}</p>
+      <button clear item-right (click)="selectItem(item.id)">View</button>
     </ion-item>
   </ion-list>
 </ion-content>

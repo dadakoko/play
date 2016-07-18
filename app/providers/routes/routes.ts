@@ -5,6 +5,7 @@ import {SignupPage} from '../../pages/signup/signup';
 import {Auth} from '../../providers/auth/auth'
 import {VideoPage} from "../../pages/video/video";
 import {VideosPage} from "../../pages/videos/videos";
+import {AddPage} from "../../pages/add/add";
 
 @Injectable()
 export class Routes {
@@ -15,6 +16,7 @@ export class Routes {
   SIGNUP:string="signup";
   VIDEO:string="video";
   VIDEOS:string="videos";
+  ADD:string="add";
 
   constructor(private auth:Auth){
     this.routes[this.HOME]=HomePage;
@@ -22,6 +24,7 @@ export class Routes {
     this.routes[this.SIGNUP]=SignupPage;
     this.routes[this.VIDEO]=VideoPage;
     this.routes[this.VIDEOS]=VideosPage;
+    this.routes[this.ADD]=AddPage;
   }
 
   getPage(id){

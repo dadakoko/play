@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class Endpoints {
 
   // API_PATH: string = "http://??.herokuapp.com"
+  // API_PATH: string = "http://192.168.1.107:3000"
   API_PATH: string = "http://localhost:3000"
 
   getLogin(){

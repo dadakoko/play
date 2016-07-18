@@ -38,5 +38,9 @@ export class VideosPage {
     this.nav.setRoot(this.routes.getRootPage())
   }
 
+  addVideo(){
+    this.nav.insert(0,this.routes.getPage(this.routes.ADD))
+  }
+
 
 }

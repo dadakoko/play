@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavController, ViewController} from 'ionic-angular';
 import {Auth} from '../../providers/auth/auth';
 import {Routes} from '../../providers/routes/routes';
-//import jsonApiSerializer = require('jsonapi-serializer');
 
 /*
  Generated class for the SignupPage page.
