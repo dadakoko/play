@@ -37,4 +37,22 @@
 
 
   </ion-list>
+
+  <ion-content class="uploading" id="uploading">
+    <progress value="{{progress}}" max="100"></progress>
+    <span>Progress: {{progress}}%</span>
+    <div class="info">
+      <div [hidden]="uploading" class="buttons">
+        <button id="done" (click)="done()" class="upload-button">
+          Back to home
+        </button>
+      </div>
+      <div class="buttons">
+        <button id="upload" (click)="upload1()" class="upload-button">
+          Start upload
+        </button>
+      </div>
+    </div>
+  </ion-content>
+
 </ion-content>

@@ -13,8 +13,11 @@
     "ionic-native": "1.3.2",
     "ionicons": "3.0.0",
     "jsonapi-serializer": "2.1.1",
+    "lodash": "^4.13.1",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.6",
+    "ts-angular-jsonapi": "0.0.2",
+    "underscore": "^1.8.3",
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
@@ -37,7 +40,9 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     "ios",
