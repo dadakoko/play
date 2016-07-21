@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import {Endpoints} from "../endpoints/endpoints";
 import {Video} from "../../models/video.model";
 import {AuthHttp} from "angular2-jwt";
+import {Headers} from "@angular/http";
 
 /*
   Generated class for the Videos provider.
@@ -13,6 +14,7 @@ import {AuthHttp} from "angular2-jwt";
 @Injectable()
 export class Videos {
 
+  contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   data: any;
 
   constructor(private authHttp: AuthHttp, private endpoints: Endpoints) {
@@ -40,6 +42,17 @@ export class Videos {
       if(video.id==id) selected = video; return selected;
     })
     return selected
+  }
+
+  add(video){
+    let observable = this.authHttp.post(this.endpoints.getVideos(),
+        JSON.stringify(video),{headers: this.contentHeader})
+        .map(res => {return res.json()});
+
+    return observable.toPromise().then((data)=>{
+      return data;
+    })
+
   }
 
 

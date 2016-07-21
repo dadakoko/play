@@ -23,10 +23,13 @@ export class VideosPage {
     return [[NavController], [Routes],[VideosProvider],[Auth]];
   }
   constructor(private nav: NavController, private routes:Routes, private videosProvider:VideosProvider, private auth:Auth) {
+  }
+
+  onPageWillEnter(){
     this.videosProvider.load().then((data)=>{
       this.items = data.data;
     });
-    this.username = auth.user.username;
+    this.username = this.auth.user.username;
   }
 
   selectItem(id){

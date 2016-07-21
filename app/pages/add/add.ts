@@ -4,6 +4,9 @@ import {Routes} from "../../providers/routes/routes";
 import {Camera, Transfer} from "ionic-native";
 import {NgZone} from '@angular/core';
 import * as _ from 'lodash';
+import {Auth} from "../../providers/auth/auth";
+import {Videos as VideosProvider} from '../../providers/videos/videos'
+
 /*
  Generated class for the AddPage page.
 
@@ -16,21 +19,24 @@ import * as _ from 'lodash';
 export class AddPage {
 
     base64Image:string;
-    uploading: boolean = true;
-    total: number;
-    progress: number;
+    uploading:boolean = true;
+    total:number;
+    progress:number;
+    base64TempImage:string;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
-        return [[NavController], [Routes],[Platform],[NgZone]];
+        return [[NavController], [Routes], [Platform], [NgZone], [VideosProvider], [Auth]];
     }
 
-    constructor(private nav:NavController, private routes:Routes, private platform:Platform, private ngZone:NgZone) {
-    //     platform.ready().then(() => {
-    //         // Okay, so the platform is ready and our plugins are available.
-    //         // Here you can do any higher level native things you might need.
-    //         // console.log(navigator.device.capture)
-    //     });
+    constructor(private nav:NavController, private routes:Routes,
+                private platform:Platform, private ngZone:NgZone,
+                private videosProvider:VideosProvider, private auth:Auth) {
+        //     platform.ready().then(() => {
+        //         // Okay, so the platform is ready and our plugins are available.
+        //         // Here you can do any higher level native things you might need.
+        //         // console.log(navigator.device.capture)
+        //     });
     }
 
     onClickBack() {
@@ -45,10 +51,10 @@ export class AddPage {
             targetWidth: 200,
             targetHeight: 200
         }).then((imageData) => {
-            this.base64Image = "data:image/jpeg;base64," + imageData;
-                this.platform.ready().then(() => {
-                    this.upload();
-                });
+            this.base64TempImage = "data:image/jpeg;base64," + imageData;
+            this.platform.ready().then(() => {
+                this.upload();
+            });
 
         }, (error) => {
             console.log("error ", error)
@@ -64,7 +70,22 @@ export class AddPage {
     }
 
     success = (result:any):void => {
-            this.uploading = false;
+        this.uploading = false;
+        this.base64Image = result.response;
+
+        let video = {
+            "data": {
+                "type": "videos",
+                "attributes": {
+                    "title": "nouvelle video 2",
+                    "url": this.base64Image,
+                    "author": "5787a74fcfb7ed8caec81751"
+                }
+            }
+        }
+
+        this.videosProvider.add(video);
+
     }
 
     failed = (err:any):void => {
@@ -90,7 +111,7 @@ export class AddPage {
 
     upload = ():void => {
         let ft = new Transfer();
-        let filename = _.uniqueId() + ".jpg";
+        let filename = new Date().toISOString() + ".jpg";
         let options = {
             fileKey: 'file',
             fileName: filename,
@@ -104,7 +125,7 @@ export class AddPage {
             }
         };
         ft.onProgress(this.onProgress);
-        ft.upload(this.base64Image, "http://localhost/videos/upload", options, false)
+        ft.upload(this.base64TempImage, "http://1288378b.ngrok.io/videos/upload", options, false)
             .then((result:any) => {
                 this.success(result);
             }).catch((error:any) => {
