@@ -25,7 +25,7 @@ export class VideosPage {
   constructor(private nav: NavController, private routes:Routes, private videosProvider:VideosProvider, private auth:Auth) {
   }
 
-  onPageWillEnter(){
+  onPageLoaded(){
     this.videosProvider.load().then((data)=>{
       this.items = data.data;
     });

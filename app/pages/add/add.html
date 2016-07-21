@@ -4,55 +4,60 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-header>
-    <header-content title="Add a new video" backEnabled={{true}} (onBack)="onClickBack()"></header-content>
-  </ion-header>
+    <ion-header>
+        <header-content title="Add a new video" backEnabled={{true}} (onBack)="onClickBack()"></header-content>
+    </ion-header>
 
-</ion-header>
 
 
 <ion-content padding>
-  <ion-list>
+    <div>
+        <ion-list>
 
-    <ion-item>
-      <ion-label stacked>Name</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+            <ion-item>
+                <ion-label stacked>Title</ion-label>
+                <ion-input type="text" [(ngModel)]="title"></ion-input>
+            </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Description</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+            <ion-item>
+                <ion-label stacked>artist</ion-label>
+                <ion-input type="text" [(ngModel)]="artist"></ion-input>
+            </ion-item>
 
-    <button dark round full (click)="getPicture()">
-      <ion-icon name='camera' is-active="false"></ion-icon>
-      Take video
-    </button>
+            <ion-item>
+                <ion-label stacked>Description</ion-label>
+                <ion-textarea [(ngModel)]="description"></ion-textarea>
+            </ion-item>
 
-    <ion-card>
-      <img [src]="base64Image" *ngIf="base64Image" />
-    </ion-card>
+            <button dark round full (click)="getPicture()">
+                <ion-icon name='camera' is-active="false"></ion-icon>
+                Take video
+            </button>
+
+            <ion-card>
+                <img [src]="base64Image" *ngIf="base64Image"/>
+            </ion-card>
 
 
-  </ion-list>
-
-  <ion-content class="uploading" id="uploading">
-    <progress value="{{progress}}" max="100"></progress>
-    <span>Progress: {{progress}}%</span>
-    <div class="info">
-      <div [hidden]="uploading" class="buttons">
-        <button id="done" (click)="done()" class="upload-button">
-          Back to home
-        </button>
-      </div>
-      <div class="buttons">
-        <button id="upload" (click)="upload1()" class="upload-button">
-          Start upload
-        </button>
-      </div>
+        </ion-list>
     </div>
-  </ion-content>
+
+    <div>
+        <progress value="{{progress}}" max="100"></progress>
+        <span>Progress: {{progress}}%</span>
+        <div class="info">
+            <div [hidden]="uploading" class="buttons">
+                <button id="done" (click)="done()" class="upload-button">
+                    Back to home
+                </button>
+            </div>
+            <div class="buttons">
+                <button id="upload" (click)="upload1()" class="upload-button">
+                    Start upload
+                </button>
+            </div>
+        </div>
+    </div>
 
 </ion-content>

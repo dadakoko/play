@@ -23,6 +23,9 @@ export class AddPage {
     total:number;
     progress:number;
     base64TempImage:string;
+    title:string;
+    description:string;
+    artist:string;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -72,19 +75,27 @@ export class AddPage {
     success = (result:any):void => {
         this.uploading = false;
         this.base64Image = result.response;
+        
+
 
         let video = {
             "data": {
                 "type": "videos",
                 "attributes": {
-                    "title": "nouvelle video 2",
+                    "title": this.title,
+                    "artist": this.artist,
+                    "description": this.description,
                     "url": this.base64Image,
-                    "author": "5787a74fcfb7ed8caec81751"
+                    "author": this.auth.user.userId
                 }
             }
         }
 
-        this.videosProvider.add(video);
+        this.videosProvider.add(video).then(
+            data=>{
+                console.log(data)
+            }
+        );
 
     }
 
