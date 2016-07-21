@@ -28,7 +28,7 @@ export class VideoPage {
     this.selectedVideo = videoProvider.getVideoById(selectedId)
     let url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     //this.selectedVideo = {name:"video bla",description:"c est bla",url:url};
-    this.selectedVideo.attributes.url = url;
+    this.selectedVideo.attributes.videourl = url;
   }
 
   onClickBack(){

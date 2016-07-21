@@ -6,6 +6,7 @@ import {NgZone} from '@angular/core';
 import * as _ from 'lodash';
 import {Auth} from "../../providers/auth/auth";
 import {Videos as VideosProvider} from '../../providers/videos/videos'
+//import {MediaCapture} from "ionic-native"
 
 /*
  Generated class for the AddPage page.
@@ -35,11 +36,16 @@ export class AddPage {
     constructor(private nav:NavController, private routes:Routes,
                 private platform:Platform, private ngZone:NgZone,
                 private videosProvider:VideosProvider, private auth:Auth) {
-        //     platform.ready().then(() => {
-        //         // Okay, so the platform is ready and our plugins are available.
-        //         // Here you can do any higher level native things you might need.
-        //         // console.log(navigator.device.capture)
-        //     });
+            platform.ready().then(() => {
+                // Okay, so the platform is ready and our plugins are available.
+                // Here you can do any higher level native things you might need.
+                //console.log(navigator.device.capture)
+            });
+    //     MediaCapture.captureImage({limit:1})
+    //         .then(
+    //             (data: MediaFile[]) => console.log(data),
+    //             (err: CaptureError) => console.error(err)
+    //         );
     }
 
     onClickBack() {
