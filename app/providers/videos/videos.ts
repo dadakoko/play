@@ -22,7 +22,7 @@ export class Videos {
   }
 
   load() {
-    if (this.data) {
+    if (1===2) {
       return Promise.resolve(this.data);
     }
 
@@ -31,7 +31,7 @@ export class Videos {
           .map(res => res.json())
           .subscribe(data => {
             this.data = data;
-            resolve(this.data);
+            resolve(data);
           });
     });
   }

@@ -32,7 +32,17 @@
 
             <button dark round full (click)="getPicture()">
                 <ion-icon name='camera' is-active="false"></ion-icon>
-                Take video
+                Take picture
+            </button>
+
+            <button dark round full (click)="pickVideo()">
+                <ion-icon name='camera' is-active="false"></ion-icon>
+                pick video
+            </button>
+
+            <button dark round full (click)="getVideo()">
+                <ion-icon name='camera' is-active="false"></ion-icon>
+                take video
             </button>
 
             <ion-card>
@@ -50,11 +60,6 @@
             <div [hidden]="uploading" class="buttons">
                 <button id="done" (click)="done()" class="upload-button">
                     Back to home
-                </button>
-            </div>
-            <div class="buttons">
-                <button id="upload" (click)="upload1()" class="upload-button">
-                    Start upload
                 </button>
             </div>
         </div>

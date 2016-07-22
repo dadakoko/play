@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
 import {Routes} from "../../providers/routes/routes";
-import {Camera, Transfer} from "ionic-native";
+import {Camera, Transfer, MediaFile, CaptureError, MediaCapture} from "ionic-native";
 import {NgZone} from '@angular/core';
 import * as _ from 'lodash';
 import {Auth} from "../../providers/auth/auth";
 import {Videos as VideosProvider} from '../../providers/videos/videos'
-//import {MediaCapture} from "ionic-native"
 
 /*
  Generated class for the AddPage page.
@@ -20,6 +19,7 @@ import {Videos as VideosProvider} from '../../providers/videos/videos'
 export class AddPage {
 
     base64Image:string;
+    videoUri:string;
     uploading:boolean = true;
     total:number;
     progress:number;
@@ -27,6 +27,7 @@ export class AddPage {
     title:string;
     description:string;
     artist:string;
+    videoUriTemp:string;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -36,16 +37,6 @@ export class AddPage {
     constructor(private nav:NavController, private routes:Routes,
                 private platform:Platform, private ngZone:NgZone,
                 private videosProvider:VideosProvider, private auth:Auth) {
-            platform.ready().then(() => {
-                // Okay, so the platform is ready and our plugins are available.
-                // Here you can do any higher level native things you might need.
-                //console.log(navigator.device.capture)
-            });
-    //     MediaCapture.captureImage({limit:1})
-    //         .then(
-    //             (data: MediaFile[]) => console.log(data),
-    //             (err: CaptureError) => console.error(err)
-    //         );
     }
 
     onClickBack() {
@@ -74,6 +65,40 @@ export class AddPage {
 
     }
 
+    getVideo(){
+        MediaCapture.captureVideo({limit: 1})
+            .then((data:MediaFile[]) => {
+                    this.videoUriTemp = data[0].fullPath;
+                    this.platform.ready().then(() => {
+                        this.uploadVideo();
+                    });
+                },
+                (err:CaptureError) =>
+                    console.error(err)
+            );
+
+    }
+
+    pickVideo() {
+
+        Camera.getPicture({
+            mediaType: Camera.MediaType.VIDEO,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+        }).then((videoURI) => {
+            console.log("my video: ", videoURI);
+            this.videoUriTemp = videoURI;
+            this.platform.ready().then(() => {
+                this.uploadVideo();
+            });
+        }, (error) => {
+            console.error("error ", error)
+        });
+
+    }
+
+
+
+
     done = ():void => {
         this.nav.setRoot(this.routes.getPage(this.routes.VIDEOS))
     }
@@ -81,7 +106,6 @@ export class AddPage {
     success = (result:any):void => {
         this.uploading = false;
         this.base64Image = result.response;
-        
 
 
         let video = {
@@ -98,7 +122,33 @@ export class AddPage {
         }
 
         this.videosProvider.add(video).then(
-            data=>{
+            data=> {
+                console.log(data)
+            }
+        );
+
+    }
+
+    videoSuccess = (result:any):void => {
+        this.uploading = false;
+        this.videoUri = result.response;
+
+
+        let video = {
+            "data": {
+                "type": "videos",
+                "attributes": {
+                    "title": this.title,
+                    "artist": this.artist,
+                    "description": this.description,
+                    "url": this.videoUri,
+                    "author": this.auth.user.userId
+                }
+            }
+        }
+
+        this.videosProvider.add(video).then(
+            data=> {
                 console.log(data)
             }
         );
@@ -117,12 +167,6 @@ export class AddPage {
                 console.log(progress);
                 this.progress = progress
             }
-        });
-    }
-
-    upload1 = ():void => {
-        this.platform.ready().then(() => {
-            this.upload();
         });
     }
 
@@ -150,5 +194,28 @@ export class AddPage {
         });
     }
 
+    uploadVideo = ():void => {
+        let ft = new Transfer();
+        let filename = new Date().toISOString() + ".mov";
+        let options = {
+            fileKey: 'file',
+            fileName: filename,
+            mimeType: 'video/quicktime',
+            chunkedMode: false,
+            headers: {
+                'Content-Type': undefined
+            },
+            params: {
+                fileName: filename
+            }
+        };
+        ft.onProgress(this.onProgress);
+        ft.upload(this.videoUriTemp, "http://1288378b.ngrok.io/videos/upload", options, false)
+            .then((result:any) => {
+                this.success(result);
+            }).catch((error:any) => {
+            this.failed(error);
+        });
+    }
 
 }

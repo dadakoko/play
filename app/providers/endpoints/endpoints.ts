@@ -22,7 +22,7 @@ export class Endpoints {
   }
 
   getVideos(){
-    return this.API_PATH + "/videos"
+    return this.API_PATH + "/videos";
   }
 
 }
