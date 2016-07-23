@@ -28,6 +28,7 @@ export class AddPage {
     description:string;
     artist:string;
     videoUriTemp:string;
+    thumbnailUri:string;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -131,7 +132,9 @@ export class AddPage {
 
     videoSuccess = (result:any):void => {
         this.uploading = false;
-        this.videoUri = result.response;
+        let res = JSON.parse(result.response);
+        this.videoUri = res[0];
+        this.thumbnailUri = res[1];
 
 
         let video = {
@@ -141,7 +144,8 @@ export class AddPage {
                     "title": this.title,
                     "artist": this.artist,
                     "description": this.description,
-                    "url": this.videoUri,
+                    "videourl": this.videoUri,
+                    "thumbnailurl": this.thumbnailUri,
                     "author": this.auth.user.userId
                 }
             }
@@ -212,7 +216,7 @@ export class AddPage {
         ft.onProgress(this.onProgress);
         ft.upload(this.videoUriTemp, "http://1288378b.ngrok.io/videos/upload", options, false)
             .then((result:any) => {
-                this.success(result);
+                this.videoSuccess(result);
             }).catch((error:any) => {
             this.failed(error);
         });

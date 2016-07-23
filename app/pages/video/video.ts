@@ -26,9 +26,9 @@ export class VideoPage {
   constructor(private nav: NavController, private params: NavParams, private routes:Routes, private videoProvider:VideosProvider) {
     const selectedId = params.data.id;
     this.selectedVideo = videoProvider.getVideoById(selectedId)
-    let url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    //let url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     //this.selectedVideo = {name:"video bla",description:"c est bla",url:url};
-    this.selectedVideo.attributes.videourl = url;
+    //this.selectedVideo.attributes.videourl = url;
   }
 
   onClickBack(){
