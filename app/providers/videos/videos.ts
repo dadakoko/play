@@ -45,9 +45,7 @@ export class Videos {
         JSON.stringify(video),{headers: this.contentHeader})
         .map(res => {return res.json()});
 
-    return observable.toPromise().then((data)=>{
-      return data;
-    })
+    return observable.toPromise();
 
   }
 
@@ -56,9 +54,7 @@ export class Videos {
     let observable = this.authHttp.delete(this.endpoints.getVideos()+'/'+id)
         .map(res=>{return res.json()});
 
-    return observable.toPromise().then((data)=>{
-      return data;
-    })
+    return observable.toPromise();
   }
 }
 

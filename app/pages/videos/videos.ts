@@ -21,10 +21,10 @@ export class VideosPage {
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
-        return [[Platform],[NavController], [Routes], [VideosProvider], [Auth]];
+        return [[Platform], [NavController], [Routes], [VideosProvider], [Auth]];
     }
 
-    constructor(private platform: Platform, private nav:NavController,
+    constructor(private platform:Platform, private nav:NavController,
                 private routes:Routes, private videosProvider:VideosProvider,
                 private auth:Auth) {
     }
@@ -49,11 +49,14 @@ export class VideosPage {
         this.nav.insert(0, this.routes.getPage(this.routes.ADD))
     }
 
-    public deleteVideo(video) {
-        console.log('swipe video delete :',video);
+
+    deleteVideo(video, cb = (data)=> {
+        this.items = data
+    }) {
+        console.log('swipe video delete :', video);
 
         let confirm = Alert.create({
-            title: 'Delete '+video.attributes.title,
+            title: 'Delete ' + video.attributes.title,
             message: 'Are you sure you want to delete the video?',
             buttons: [
                 {
@@ -66,7 +69,9 @@ export class VideosPage {
                     text: 'Ok',
                     handler: () => {
                         console.log('start delete ', video.attributes.title);
-                        this.videosProvider.deleteVideo(video.id);
+                        this.videosProvider.deleteVideo(video.id).then((data)=> {
+                            cb(data);
+                        })
                     }
                 }
             ]

@@ -154,7 +154,8 @@ export class AddPage {
         this.videosProvider.add(video).then(
             data=> {
                 console.log(data);
-                this.doAlert(JSON.parse(data));
+                //this.doAlert(data);
+                this.nav.insert(0, this.routes.getPage(this.routes.VIDEOS))
             }
         );
 
