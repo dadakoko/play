@@ -26,6 +26,7 @@ export class Videos {
       this.authHttp.get(this.endpoints.getVideos())
           .map(res => res.json())
           .subscribe(data => {
+            this.data = data.data;
             resolve(data.data);
           });
     });
@@ -33,7 +34,7 @@ export class Videos {
 
   getVideoById(id){
     let selected = null
-    this.data.data.map((video)=>{
+    this.data.map((video)=>{
       if(video.id==id) selected = video; return selected;
     })
     return selected
