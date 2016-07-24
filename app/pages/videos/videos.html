@@ -1,0 +1,40 @@
+<!--
+  Generated template for the VideosPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ <header-content title="My videos"></header-content>
+</ion-header>
+
+<ion-menu [content]="content" side="right">
+
+  <ion-toolbar>
+    <ion-title>Hello {{username}}</ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item (click)="addVideo()">
+      New Video
+    </ion-item>
+  </ion-list>
+
+  <ion-content padding>
+    <button full danger (click)="logout()">Logout</button>
+  </ion-content>
+</ion-menu>
+
+<ion-content padding #content>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (swipe)="deleteVideo(item)">
+      <ion-thumbnail item-left>
+        <img src={{item.attributes.thumbnailurl}}>
+      </ion-thumbnail>
+      <h2>{{item.attributes.title}}</h2>
+      <p>{{item.attributes.description}}</p>
+      <button clear item-right (click)="selectItem(item.id)">View</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

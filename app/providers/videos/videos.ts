@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Endpoints} from "../endpoints/endpoints";
 import {Video} from "../../models/video.model";
 import {AuthHttp} from "angular2-jwt";
+import {Headers} from "@angular/http";
 
 /*
   Generated class for the Videos provider.
@@ -14,6 +14,7 @@ import {AuthHttp} from "angular2-jwt";
 @Injectable()
 export class Videos {
 
+  contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   data: any;
 
   constructor(private authHttp: AuthHttp, private endpoints: Endpoints) {
@@ -21,16 +22,12 @@ export class Videos {
   }
 
   load() {
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-
     return new Promise(resolve => {
       this.authHttp.get(this.endpoints.getVideos())
           .map(res => res.json())
           .subscribe(data => {
-            this.data = data;
-            resolve(this.data);
+            this.data = data.data;
+            resolve(data.data);
           });
     });
   }
@@ -43,6 +40,21 @@ export class Videos {
     return selected
   }
 
+  add(video){
+    let observable = this.authHttp.post(this.endpoints.getVideos(),
+        JSON.stringify(video),{headers: this.contentHeader})
+        .map(res => {return res.json()});
 
+    return observable.toPromise();
+
+  }
+
+
+  deleteVideo(id) {
+    let observable = this.authHttp.delete(this.endpoints.getVideos()+'/'+id)
+        .map(res=>{return res.json()});
+
+    return observable.toPromise();
+  }
 }
 

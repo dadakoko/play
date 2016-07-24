@@ -10,7 +10,8 @@ import { Injectable } from '@angular/core';
 export class Endpoints {
 
   // API_PATH: string = "http://??.herokuapp.com"
-  API_PATH: string = "http://localhost:3000"
+  API_PATH: string = "http://1288378b.ngrok.io"
+  // API_PATH: string = "http://localhost:3000"
 
   getLogin(){
     return this.API_PATH + "/authenticate"
@@ -21,7 +22,7 @@ export class Endpoints {
   }
 
   getVideos(){
-    return this.API_PATH + "/user/places"
+    return this.API_PATH + "/videos";
   }
 
 }

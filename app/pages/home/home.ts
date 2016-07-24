@@ -17,6 +17,6 @@ export class HomePage {
   }
 
   goLogin(){
-    this.nav.push(this.routes.getPage(this.routes.VIDEO))
+    this.nav.push(this.routes.getPage(this.routes.LOGIN));
   }
 }
