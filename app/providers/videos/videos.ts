@@ -22,16 +22,11 @@ export class Videos {
   }
 
   load() {
-    if (1===2) {
-      return Promise.resolve(this.data);
-    }
-
     return new Promise(resolve => {
       this.authHttp.get(this.endpoints.getVideos())
           .map(res => res.json())
           .subscribe(data => {
-            this.data = data;
-            resolve(data);
+            resolve(data.data);
           });
     });
   }
@@ -56,5 +51,13 @@ export class Videos {
   }
 
 
+  deleteVideo(id) {
+    let observable = this.authHttp.delete(this.endpoints.getVideos()+'/'+id)
+        .map(res=>{return res.json()});
+
+    return observable.toPromise().then((data)=>{
+      return data;
+    })
+  }
 }
 

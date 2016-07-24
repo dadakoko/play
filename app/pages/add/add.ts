@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, Platform} from 'ionic-angular';
+import {NavController, Platform, Alert} from 'ionic-angular';
 import {Routes} from "../../providers/routes/routes";
 import {Camera, Transfer, MediaFile, CaptureError, MediaCapture} from "ionic-native";
 import {NgZone} from '@angular/core';
@@ -153,10 +153,20 @@ export class AddPage {
 
         this.videosProvider.add(video).then(
             data=> {
-                console.log(data)
+                console.log(data);
+                this.doAlert(JSON.parse(data));
             }
         );
 
+    }
+
+    doAlert(video) {
+        let alert = Alert.create({
+            title: 'New Video!',
+            subTitle: 'Your video is stored and available',
+            buttons: ['OK']
+        });
+        this.nav.present(alert);
     }
 
     failed = (err:any):void => {
