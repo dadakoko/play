@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e033ae2-5dd0-45c0-936a-08486beb996f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/add/add.ts" afterPath="$PROJECT_DIR$/app/pages/add/add.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/videos/videos.ts" afterPath="$PROJECT_DIR$/app/pages/videos/videos.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/providers/videos/videos.ts" afterPath="$PROJECT_DIR$/app/providers/videos/videos.ts" />
     </list>
     <ignored path="play.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +29,8 @@
           <file leaf-file-name="videos.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+                <state relative-caret-position="345">
+                  <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -559,7 +557,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../upload/ionic-2-examples/file-transfer-upload" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../docker" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v6.0.0/bin/node" />
@@ -647,12 +645,12 @@
       <workItem from="1468932888975" duration="756000" />
       <workItem from="1468996884595" duration="16770000" />
       <workItem from="1469097748451" duration="8327000" />
-      <workItem from="1469187863893" duration="14634000" />
+      <workItem from="1469187863893" duration="15898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88624000" />
+    <option name="totallyTimeSpent" value="89888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1080,8 +1078,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        <state relative-caret-position="345">
+          <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

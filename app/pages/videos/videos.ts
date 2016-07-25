@@ -50,9 +50,7 @@ export class VideosPage {
     }
 
 
-    deleteVideo(video, cb = (data)=> {
-        this.items = data
-    }) {
+    deleteVideo(video) {
         console.log('swipe video delete :', video);
 
         let confirm = Alert.create({
@@ -69,8 +67,9 @@ export class VideosPage {
                     text: 'Ok',
                     handler: () => {
                         console.log('start delete ', video.attributes.title);
+                        let self = this;
                         this.videosProvider.deleteVideo(video.id).then((data)=> {
-                            cb(data);
+                            self.items = data.data;
                         })
                     }
                 }
