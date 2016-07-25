@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e033ae2-5dd0-45c0-936a-08486beb996f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/add/add.ts" afterPath="$PROJECT_DIR$/app/pages/add/add.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/videos/videos.html" afterPath="$PROJECT_DIR$/app/pages/videos/videos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/videos/videos.ts" afterPath="$PROJECT_DIR$/app/pages/videos/videos.ts" />
     </list>
@@ -48,8 +48,8 @@
       <file leaf-file-name="videos.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="642">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,11 +58,11 @@
       <file leaf-file-name="videos.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-885">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state relative-caret-position="195">
+              <caret line="97" column="73" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1469474809000" expanded="true" signature="692:822" ph="{...}" />
+                <marker date="1469484888000" expanded="true" signature="692:822" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -81,8 +81,8 @@
       <file leaf-file-name="groupby.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pipes/groupby.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
+            <state relative-caret-position="270">
+              <caret line="18" column="70" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="70" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -168,10 +168,10 @@
         <option value="$PROJECT_DIR$/app/components/header-content/header-content.html" />
         <option value="$PROJECT_DIR$/app/pages/video/video.html" />
         <option value="$PROJECT_DIR$/app/pages/add/add.html" />
-        <option value="$PROJECT_DIR$/app/pages/videos/videos.ts" />
         <option value="$PROJECT_DIR$/app/pipes/sortasc.ts" />
         <option value="$PROJECT_DIR$/app/pipes/groupby.ts" />
         <option value="$PROJECT_DIR$/app/pages/add/add.ts" />
+        <option value="$PROJECT_DIR$/app/pages/videos/videos.ts" />
         <option value="$PROJECT_DIR$/app/pages/videos/videos.html" />
       </list>
     </option>
@@ -591,12 +591,12 @@
       <workItem from="1468932888975" duration="756000" />
       <workItem from="1468996884595" duration="16770000" />
       <workItem from="1469097748451" duration="8327000" />
-      <workItem from="1469187863893" duration="33243000" />
+      <workItem from="1469187863893" duration="35660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107233000" />
+    <option name="totallyTimeSpent" value="109650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1015,16 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pipes/groupby.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/pipes/sortasc.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1033,21 +1023,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/pipes/groupby.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="70" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-885">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        <state relative-caret-position="195">
+          <caret line="97" column="73" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <marker date="1469474809000" expanded="true" signature="692:822" ph="{...}" />
+            <marker date="1469484888000" expanded="true" signature="692:822" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="642">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -94,6 +94,14 @@ export class VideosPage {
         this.nav.present(confirm);
     }
 
+    myHeaderFn(record, recordIndex, records) {
+        if(recordIndex==0) return record.attributes.title.substring(0,1);
+        if (record.attributes.title.substring(0,1)!=records[recordIndex-1].attributes.title.substring(0,1)) {
+            return record.attributes.title.substring(0,1);
+        }
+        return null;
+    }
+
     openMenu(ev, video) {
         if (ev.target.closest("button") != null) {
             this.selectItem(video.id);

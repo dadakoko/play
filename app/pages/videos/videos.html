@@ -5,39 +5,66 @@
   Ionic pages and navigation.
 -->
 <ion-header>
- <header-content title="My videos" burgerEnabled={{true}}></header-content>
+    <header-content title="My videos" burgerEnabled={{true}}></header-content>
 </ion-header>
 
 <ion-menu [content]="content" side="right">
 
-  <ion-toolbar>
-    <ion-title>Hello {{username}}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Hello {{username}}</ion-title>
+    </ion-toolbar>
 
-  <ion-content padding>
-    <button full danger (click)="logout()">Logout</button>
-  </ion-content>
+    <ion-content padding>
+        <button full danger (click)="logout()">Logout</button>
+    </ion-content>
 </ion-menu>
 
 <ion-content padding #content>
-  <ion-list>
-    <ion-item-group *ngFor="let group of items | sortAsc:'title'| groupBy:'title'">
-      <ion-item-divider>{{group.value}}</ion-item-divider>
-      <!--<ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)">-->
-        <ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
-        <!--<ion-item  *ngFor="let item of group.list">-->
-        <ion-thumbnail item-left>
-          <div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>
-        </ion-thumbnail>
-        <h2>{{item.attributes.title}}</h2>
-        <p>{{item.attributes.description}}</p>
-        <!--<button clear item-right (click)="selectItem(item.id)">View</button>-->
-        <button clear item-right>View</button>
-      </ion-item>
-    </ion-item-group>
-  </ion-list>
-  <button class="fab-footer" fab fab-bottom fab-center (click)="addVideo()">
-    <ion-icon name="add"></ion-icon>
-  </button>
+    <!--<ion-list [virtualScroll]="items">-->
+    <!--<ion-item  *virtualItem=" let item" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">-->
+    <!--<ion-thumbnail item-left>-->
+    <!--<div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>-->
+    <!--</ion-thumbnail>-->
+    <!--<h2>{{item.attributes.title}}</h2>-->
+    <!--<p>{{item.attributes.description}}</p>-->
+    <!--<button clear item-right>View</button>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+    <ion-list [virtualScroll]="items | sortAsc:'title'" [headerFn]="myHeaderFn">
+        <ion-item-divider *virtualHeader="let header">{{header}}</ion-item-divider>
+        <ion-item *virtualItem="let item" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
+            <ion-thumbnail item-left>
+                <div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>
+            </ion-thumbnail>
+            <h2>{{item.attributes.title}}</h2>
+            <p>{{item.attributes.description}}</p>
+            <button clear item-right>View</button>
+        </ion-item>
+    </ion-list>
+
+    <!--<ion-list>-->
+    <!--<ion-item-group *ngFor="let group of items | sortAsc:'title'| groupBy:'title'">-->
+    <!--<ion-item-divider>{{group.value}}</ion-item-divider>-->
+    <!--&lt;!&ndash;<ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)">&ndash;&gt;-->
+    <!--<ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">-->
+    <!--&lt;!&ndash;<ion-item  *ngFor="let item of group.list">&ndash;&gt;-->
+    <!--<ion-thumbnail item-left>-->
+    <!--<div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>-->
+    <!--</ion-thumbnail>-->
+    <!--<h2>{{item.attributes.title}}</h2>-->
+    <!--<p>{{item.attributes.description}}</p>-->
+    <!--&lt;!&ndash;<button clear item-right (click)="selectItem(item.id)">View</button>&ndash;&gt;-->
+    <!--<button clear item-right>View</button>-->
+    <!--</ion-item>-->
+    <!--</ion-item-group>-->
+    <!--</ion-list>-->
+
 
 </ion-content>
+
+<ion-footer>
+    <button fab fab-bottom fab-center (click)="addVideo()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-footer>
+
