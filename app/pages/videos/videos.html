@@ -27,13 +27,13 @@
 
 <ion-content padding #content>
   <ion-list>
-    <ion-item *ngFor="let item of items" (swipe)="deleteVideo(item)">
+    <ion-item *ngFor="let item of items" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
       <ion-thumbnail item-left>
-        <img src={{item.attributes.thumbnailurl}}>
+        <div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>
       </ion-thumbnail>
       <h2>{{item.attributes.title}}</h2>
       <p>{{item.attributes.description}}</p>
-      <button clear item-right (click)="selectItem(item.id)">View</button>
+      <button clear item-right>View</button>
     </ion-item>
   </ion-list>
 

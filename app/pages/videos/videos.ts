@@ -12,6 +12,14 @@ import {Auth} from "../../providers/auth/auth";
  */
 @Component({
     templateUrl: 'build/pages/videos/videos.html',
+    styles: [`
+      .img_thumb {
+        background-size: contain;
+        background-position: center center;
+        height: 80px;
+        width: 80px;
+      }
+    `]
 })
 export class VideosPage {
 
@@ -26,13 +34,13 @@ export class VideosPage {
     constructor(private platform:Platform, private nav:NavController,
                 private routes:Routes, private videosProvider:VideosProvider,
                 private auth:Auth) {
-    }
-
-    ionViewDidEnter() {
         this.videosProvider.load().then((data)=> {
             this.items = data;
         });
         this.username = this.auth.user.username;
+    }
+
+    ionViewDidEnter() {
     }
 
     selectItem(id) {
@@ -78,7 +86,11 @@ export class VideosPage {
         this.nav.present(confirm);
     }
 
-    openMenu(video) {
+    openMenu(ev, video) {
+        if (ev.target.closest("button") != null) {
+            this.selectItem(video.id);
+            return;
+        }
         let actionSheet = ActionSheet.create({
             title: video.attributes.title,
             cssClass: 'action-sheets-basic-page',
@@ -88,7 +100,11 @@ export class VideosPage {
                     role: 'destructive',
                     icon: !this.platform.is('ios') ? 'trash' : null,
                     handler: () => {
-                        console.log('Delete clicked');
+                        console.log('start delete ', video.attributes.title);
+                        let self = this;
+                        this.videosProvider.deleteVideo(video.id).then((data)=> {
+                            self.items = data.data;
+                        })
                     }
                 },
                 {
@@ -99,10 +115,10 @@ export class VideosPage {
                     }
                 },
                 {
-                    text: 'Play',
+                    text: 'View',
                     icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
                     handler: () => {
-                        console.log('Play clicked');
+                        this.selectItem(video.id);
                     }
                 },
                 {
