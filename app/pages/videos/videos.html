@@ -21,14 +21,20 @@
 
 <ion-content padding #content>
   <ion-list>
-    <ion-item *ngFor="let item of items" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
-      <ion-thumbnail item-left>
-        <div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>
-      </ion-thumbnail>
-      <h2>{{item.attributes.title}}</h2>
-      <p>{{item.attributes.description}}</p>
-      <button clear item-right>View</button>
-    </ion-item>
+    <ion-item-group *ngFor="let group of items | sortAsc:'title'| groupBy:'title'">
+      <ion-item-divider>{{group.value}}</ion-item-divider>
+      <!--<ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)">-->
+        <ion-item  *ngFor="let item of group.list" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
+        <!--<ion-item  *ngFor="let item of group.list">-->
+        <ion-thumbnail item-left>
+          <div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>
+        </ion-thumbnail>
+        <h2>{{item.attributes.title}}</h2>
+        <p>{{item.attributes.description}}</p>
+        <!--<button clear item-right (click)="selectItem(item.id)">View</button>-->
+        <button clear item-right>View</button>
+      </ion-item>
+    </ion-item-group>
   </ion-list>
   <button class="fab-footer" fab fab-bottom fab-center (click)="addVideo()">
     <ion-icon name="add"></ion-icon>

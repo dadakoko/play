@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e033ae2-5dd0-45c0-936a-08486beb996f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/add/add.html" afterPath="$PROJECT_DIR$/app/pages/add/add.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/add/add.ts" afterPath="$PROJECT_DIR$/app/pages/add/add.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/videos/videos.html" afterPath="$PROJECT_DIR$/app/pages/videos/videos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/videos/videos.ts" afterPath="$PROJECT_DIR$/app/pages/videos/videos.ts" />
     </list>
     <ignored path="play.iws" />
@@ -35,21 +35,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header-content.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/header-content/header-content.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-              <folding>
-                <marker date="1469435706000" expanded="true" signature="409:579" ph="{...}" />
-                <marker date="1469435706000" expanded="true" signature="615:849" ph="{...}" />
-                <marker date="1469435706000" expanded="true" signature="867:872" ph="{...}" />
-                <marker date="1469435706000" expanded="true" signature="887:972" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="header-content.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/header-content/header-content.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="videos.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="videos.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+            <state relative-caret-position="507">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,21 +58,43 @@
       <file leaf-file-name="videos.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="108" column="40" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="40" />
+            <state relative-caret-position="-885">
+              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1469445216000" expanded="true" signature="602:732" ph="{...}" />
+                <marker date="1469474809000" expanded="true" signature="692:822" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/add/add.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="402">
               <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groupby.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/pipes/groupby.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sortasc.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/pipes/sortasc.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -116,8 +123,8 @@
       <file leaf-file-name="add.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/add/add.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="120">
+              <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -160,10 +167,12 @@
         <option value="$PROJECT_DIR$/app/components/header-content/header-content.ts" />
         <option value="$PROJECT_DIR$/app/components/header-content/header-content.html" />
         <option value="$PROJECT_DIR$/app/pages/video/video.html" />
-        <option value="$PROJECT_DIR$/app/pages/videos/videos.html" />
-        <option value="$PROJECT_DIR$/app/pages/videos/videos.ts" />
-        <option value="$PROJECT_DIR$/app/pages/add/add.ts" />
         <option value="$PROJECT_DIR$/app/pages/add/add.html" />
+        <option value="$PROJECT_DIR$/app/pages/videos/videos.ts" />
+        <option value="$PROJECT_DIR$/app/pipes/sortasc.ts" />
+        <option value="$PROJECT_DIR$/app/pipes/groupby.ts" />
+        <option value="$PROJECT_DIR$/app/pages/add/add.ts" />
+        <option value="$PROJECT_DIR$/app/pages/videos/videos.html" />
       </list>
     </option>
   </component>
@@ -339,6 +348,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="play" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="play" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pipes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -564,12 +591,12 @@
       <workItem from="1468932888975" duration="756000" />
       <workItem from="1468996884595" duration="16770000" />
       <workItem from="1469097748451" duration="8327000" />
-      <workItem from="1469187863893" duration="28402000" />
+      <workItem from="1469187863893" duration="33243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102392000" />
+    <option name="totallyTimeSpent" value="107233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -608,25 +635,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/pages/add/add.ts</url>
+          <line>99</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/pages/home/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/signup/signup.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/signup/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -960,25 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="108" column="40" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <marker date="1469445216000" expanded="true" signature="602:732" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/login/login.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -995,20 +997,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/add/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/add/add.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="120">
+          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/add/add.html">
+    <entry file="file://$PROJECT_DIR$/app/pipes/groupby.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+        <state relative-caret-position="330">
+          <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pipes/sortasc.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-885">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <marker date="1469474809000" expanded="true" signature="692:822" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/videos/videos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>

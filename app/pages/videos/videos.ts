@@ -4,6 +4,8 @@ import {Routes} from '../../providers/routes/routes';
 import {Videos as VideosProvider} from '../../providers/videos/videos'
 import {Auth} from "../../providers/auth/auth";
 import {Camera, Transfer} from "ionic-native/dist/index";
+import {GroupBy} from "../../pipes/groupby";
+import {SortAsc} from "../../pipes/sortasc";
 
 /*
  Generated class for the VideosPage page.
@@ -20,7 +22,8 @@ import {Camera, Transfer} from "ionic-native/dist/index";
         height: 80px;
         width: 80px;
       }
-    `]
+    `],
+    pipes:[SortAsc, GroupBy]
 })
 export class VideosPage {
 

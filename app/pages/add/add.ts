@@ -95,14 +95,15 @@ export class AddPage {
         this.videoUri = res[0];
         this.thumbnailUri = res[1];
 
+        let data = this.videoForm.value;
 
         let video = {
             "data": {
                 "type": "videos",
                 "attributes": {
-                    "title": this.title,
-                    "artist": this.artist,
-                    "description": this.description,
+                    "title": data.title,
+                    "artist": data.artist,
+                    "description": data.description,
                     "videourl": this.videoUri,
                     "thumbnailurl": this.thumbnailUri,
                     "author": this.auth.user.userId
