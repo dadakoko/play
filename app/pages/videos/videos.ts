@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController, Popover, Platform, ActionSheet, Alert} from 'ionic-angular';
+import {NavController, Platform, ActionSheet, Alert} from 'ionic-angular';
 import {Routes} from '../../providers/routes/routes';
 import {Videos as VideosProvider} from '../../providers/videos/videos'
 import {Auth} from "../../providers/auth/auth";
-import {ActionPopover} from "../../components/action-popover/action-popover";
 
 /*
  Generated class for the VideosPage page.

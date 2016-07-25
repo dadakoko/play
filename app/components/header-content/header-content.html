@@ -10,8 +10,11 @@
       <ion-icon name='arrow-back'></ion-icon>
     </button>
   </ion-buttons>
-  <ion-title>{{title}}</ion-title>
-  <ion-buttons right>
+    <ion-title>
+      <img *ngIf="thumbnail" class="thumb_title" src={{thumbnail}}>
+      {{title}}
+    </ion-title>
+  <ion-buttons right *ngIf="showBurger">
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
