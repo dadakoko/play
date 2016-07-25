@@ -3,6 +3,7 @@ import {NavController, Platform, ActionSheet, Alert} from 'ionic-angular';
 import {Routes} from '../../providers/routes/routes';
 import {Videos as VideosProvider} from '../../providers/videos/videos'
 import {Auth} from "../../providers/auth/auth";
+import {Camera, Transfer} from "ionic-native/dist/index";
 
 /*
  Generated class for the VideosPage page.
@@ -25,6 +26,10 @@ export class VideosPage {
 
     items:any = []
     username:string;
+    base64Image:string;
+    uploading:boolean = true;
+    base64TempImage:string;
+
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -98,7 +103,7 @@ export class VideosPage {
                 {
                     text: 'Delete',
                     role: 'destructive',
-                    icon: !this.platform.is('ios') ? 'trash' : null,
+                    icon: 'trash',
                     handler: () => {
                         console.log('start delete ', video.attributes.title);
                         let self = this;
@@ -109,29 +114,36 @@ export class VideosPage {
                 },
                 {
                     text: 'Share',
-                    icon: !this.platform.is('ios') ? 'share' : null,
+                    icon: 'share',
                     handler: () => {
                         console.log('Share clicked');
                     }
                 },
                 {
                     text: 'View',
-                    icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
+                    icon: 'arrow-dropright-circle',
                     handler: () => {
                         this.selectItem(video.id);
                     }
                 },
                 {
                     text: 'Favorite',
-                    icon: !this.platform.is('ios') ? 'heart-outline' : null,
+                    icon: 'heart-outline',
                     handler: () => {
                         console.log('Favorite clicked');
                     }
                 },
                 {
+                    text: 'Thumbnail',
+                    icon: 'ios-camera',
+                    handler: () => {
+                        this.getPicture();
+                    }
+                },
+                {
                     text: 'Cancel',
                     role: 'cancel', // will always sort to be on the bottom
-                    icon: !this.platform.is('ios') ? 'close' : null,
+                    icon: 'close',
                     handler: () => {
                         console.log('Cancel clicked');
                     }
@@ -141,6 +153,61 @@ export class VideosPage {
 
         this.nav.present(actionSheet);
     }
+
+
+    getPicture() {
+
+        Camera.getPicture({
+            destinationType: Camera.DestinationType.DATA_URL,
+            targetWidth: 200,
+            targetHeight: 200
+        }).then((imageData) => {
+            this.base64TempImage = "data:image/jpeg;base64," + imageData;
+            this.platform.ready().then(() => {
+                //this.upload();
+            });
+
+        }, (error) => {
+            console.log("error ", error)
+        });
+
+    }
+
+    upload = ():void => {
+        let ft = new Transfer();
+        let filename = new Date().toISOString() + ".jpg";
+        let options = {
+            fileKey: 'file',
+            fileName: filename,
+            mimeType: 'image/jpeg',
+            chunkedMode: false,
+            headers: {
+                'Content-Type': undefined
+            },
+            params: {
+                fileName: filename
+            }
+        };
+        ft.upload(this.base64TempImage, "http://1288378b.ngrok.io/videos/upload", options, false)
+            .then((result:any) => {
+                this.success(result);
+            }).catch((error:any) => {
+            this.failed(error);
+        });
+    }
+
+    failed = (err:any):void => {
+        let code = err.code;
+        alert("Failed to upload image. Code: " + code);
+    }
+
+    success = (result:any):void => {
+        this.uploading = false;
+        this.base64Image = result.response;
+
+    }
+
+
 
 
 }

@@ -5,59 +5,49 @@
   Ionic pages and navigation.
 -->
 
-    <ion-header>
-        <header-content title="Add a new video" backEnabled={{true}} (onBack)="onClickBack()"></header-content>
-    </ion-header>
-
+<ion-header>
+    <header-content title="Add" backEnabled={{true}} (onBack)="onClickBack()"></header-content>
+</ion-header>
 
 
 <ion-content padding>
     <div>
-        <ion-list>
+        <form [ngFormModel]="videoForm">
+            <ion-list>
 
-            <ion-item>
-                <ion-label stacked>Title</ion-label>
-                <ion-input type="text" [(ngModel)]="title"></ion-input>
-            </ion-item>
+                <ion-item>
+                    <ion-label stacked>Title</ion-label>
+                    <ion-input ngControl="title" type="text"></ion-input>
+                </ion-item>
 
-            <ion-item>
-                <ion-label stacked>artist</ion-label>
-                <ion-input type="text" [(ngModel)]="artist"></ion-input>
-            </ion-item>
+                <ion-item>
+                    <ion-label stacked>artist</ion-label>
+                    <ion-input ngControl="artist" type="text"></ion-input>
+                </ion-item>
 
-            <ion-item>
-                <ion-label stacked>Description</ion-label>
-                <ion-textarea [(ngModel)]="description"></ion-textarea>
-            </ion-item>
+                <ion-item>
+                    <ion-label stacked>Description</ion-label>
+                    <ion-textarea ngControl="description"></ion-textarea>
+                </ion-item>
 
-            <button dark round full (click)="getPicture()">
-                <ion-icon name='camera' is-active="false"></ion-icon>
-                Take picture
-            </button>
+            </ion-list>
+        </form>
 
-            <button dark round full (click)="pickVideo()">
-                <ion-icon name='camera' is-active="false"></ion-icon>
-                pick video
-            </button>
+        <button [disabled]="!videoForm.valid" full (click)="pickVideo()">
+            <ion-icon name='image' is-active="false"></ion-icon>
+            pick video
+        </button>
 
-            <button dark round full (click)="getVideo()">
-                <ion-icon name='camera' is-active="false"></ion-icon>
-                take video
-            </button>
+        <button [disabled]="!videoForm.valid" full (click)="getVideo()">
+            <ion-icon name='videocam' is-active="false"></ion-icon>
+            take video
+        </button>
 
-        </ion-list>
     </div>
 
-    <div>
+    <div [hidden]="uploading">
         <progress value="{{progress}}" max="100"></progress>
         <span>Progress: {{progress}}%</span>
-        <div class="info">
-            <div [hidden]="uploading" class="buttons">
-                <button id="done" (click)="done()" class="upload-button">
-                    Back to home
-                </button>
-            </div>
-        </div>
     </div>
 
 </ion-content>

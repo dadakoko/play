@@ -6,6 +6,7 @@ import {NgZone} from '@angular/core';
 import * as _ from 'lodash';
 import {Auth} from "../../providers/auth/auth";
 import {Videos as VideosProvider} from '../../providers/videos/videos'
+import {ControlGroup, Validators, FORM_DIRECTIVES, FormBuilder} from "@angular/common";
 
 /*
  Generated class for the AddPage page.
@@ -15,57 +16,44 @@ import {Videos as VideosProvider} from '../../providers/videos/videos'
  */
 @Component({
     templateUrl: 'build/pages/add/add.html',
+    directives: [[FORM_DIRECTIVES]]
 })
 export class AddPage {
 
-    base64Image:string;
     videoUri:string;
     uploading:boolean = true;
     total:number;
     progress:number;
-    base64TempImage:string;
     title:string;
     description:string;
     artist:string;
     videoUriTemp:string;
     thumbnailUri:string;
+    videoForm: ControlGroup;
+
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
-        return [[NavController], [Routes], [Platform], [NgZone], [VideosProvider], [Auth]];
+        return [[NavController], [Routes], [Platform], [NgZone], [VideosProvider], [Auth],[FormBuilder]];
     }
 
     constructor(private nav:NavController, private routes:Routes,
                 private platform:Platform, private ngZone:NgZone,
-                private videosProvider:VideosProvider, private auth:Auth) {
+                private videosProvider:VideosProvider, private auth:Auth,
+                private formBuilder: FormBuilder) {
+
+        this.videoForm = formBuilder.group({
+            title: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+            artist: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+            description: ['', Validators.compose([Validators.maxLength(100), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+        });
+
     }
 
     onClickBack() {
         this.nav.setRoot(this.routes.getPage(this.routes.VIDEOS))
     }
-
-
-    getPicture() {
-
-        Camera.getPicture({
-            destinationType: Camera.DestinationType.DATA_URL,
-            targetWidth: 200,
-            targetHeight: 200
-        }).then((imageData) => {
-            this.base64TempImage = "data:image/jpeg;base64," + imageData;
-            this.platform.ready().then(() => {
-                this.upload();
-            });
-
-        }, (error) => {
-            console.log("error ", error)
-        });
-
-
-        //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
-
-    }
-
+    
     getVideo(){
         MediaCapture.captureVideo({limit: 1})
             .then((data:MediaFile[]) => {
@@ -97,41 +85,12 @@ export class AddPage {
 
     }
 
-
-
-
     done = ():void => {
         this.nav.setRoot(this.routes.getPage(this.routes.VIDEOS))
     }
-
-    success = (result:any):void => {
-        this.uploading = false;
-        this.base64Image = result.response;
-
-
-        let video = {
-            "data": {
-                "type": "videos",
-                "attributes": {
-                    "title": this.title,
-                    "artist": this.artist,
-                    "description": this.description,
-                    "url": this.base64Image,
-                    "author": this.auth.user.userId
-                }
-            }
-        }
-
-        this.videosProvider.add(video).then(
-            data=> {
-                console.log(data)
-            }
-        );
-
-    }
-
+    
     videoSuccess = (result:any):void => {
-        this.uploading = false;
+        this.uploading = true;
         let res = JSON.parse(result.response);
         this.videoUri = res[0];
         this.thumbnailUri = res[1];
@@ -184,32 +143,9 @@ export class AddPage {
             }
         });
     }
-
-    upload = ():void => {
-        let ft = new Transfer();
-        let filename = new Date().toISOString() + ".jpg";
-        let options = {
-            fileKey: 'file',
-            fileName: filename,
-            mimeType: 'image/jpeg',
-            chunkedMode: false,
-            headers: {
-                'Content-Type': undefined
-            },
-            params: {
-                fileName: filename
-            }
-        };
-        ft.onProgress(this.onProgress);
-        ft.upload(this.base64TempImage, "http://1288378b.ngrok.io/videos/upload", options, false)
-            .then((result:any) => {
-                this.success(result);
-            }).catch((error:any) => {
-            this.failed(error);
-        });
-    }
-
+    
     uploadVideo = ():void => {
+        this.uploading = false;
         let ft = new Transfer();
         let filename = new Date().toISOString() + ".mov";
         let options = {
