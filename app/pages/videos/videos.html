@@ -14,12 +14,6 @@
     <ion-title>Hello {{username}}</ion-title>
   </ion-toolbar>
 
-  <ion-list>
-    <ion-item (click)="addVideo()">
-      New Video
-    </ion-item>
-  </ion-list>
-
   <ion-content padding>
     <button full danger (click)="logout()">Logout</button>
   </ion-content>
@@ -36,5 +30,8 @@
       <button clear item-right>View</button>
     </ion-item>
   </ion-list>
+  <button class="fab-footer" fab fab-bottom fab-center (click)="addVideo()">
+    <ion-icon name="add"></ion-icon>
+  </button>
 
 </ion-content>
