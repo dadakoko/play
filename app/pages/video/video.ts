@@ -78,6 +78,7 @@ export class VideoPage {
             }
             case ActionType.LOOP:
             {
+                this._videoRef.nativeElement.loop = action.value;
                 this.loop=action.value;
                 break;
             }

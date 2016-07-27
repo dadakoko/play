@@ -5,15 +5,18 @@
   for more info on Angular 2 Components.
 -->
 
-<ion-item>
+<ion-toggle clear small [(ngModel)]="_loop" (ionChange)="loop()">
+</ion-toggle>
+<ion-item class="sliders">
     <ion-range min="5" max="20" step="1" pin="true" [(ngModel)]="speed" (ionChange)="setPlaybackRate()" secondary>
         <ion-icon range-left small name="ios-speedometer"></ion-icon>
         <ion-icon range-right name="ios-speedometer"></ion-icon>
     </ion-range>
-    <ion-range dualKnobs="true" pin="true" min="0" max="30" [(ngModel)]="crop" (ionChange)="setCrop()">
+    <ion-range style="width: 88%; margin-right: 38px" dualKnobs="true" pin="true" min="0" max={{video.duration*10}} [(ngModel)]="crop" (ionChange)="setCrop()">
         <ion-icon range-left small name="ios-crop"></ion-icon>
     </ion-range>
 </ion-item>
+
 
 <div class="outer">
     <div class="inner">
@@ -25,9 +28,6 @@
             <ion-icon name='ios-power' is-active="false"></ion-icon>
             crop
         </button>
-        <ion-toggle clear small [(ngModel)]="_loop" (click)="loop()">
-            loop
-        </ion-toggle>
     </div>
 </div>
 

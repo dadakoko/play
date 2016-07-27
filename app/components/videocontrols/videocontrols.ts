@@ -31,6 +31,14 @@ export enum ActionType {
             {
                 display: inline-block;
             }
+            .item-range ion-range
+            {
+                height: 25%;
+            }
+            .sliders
+            {
+                height: 90px;
+            }
     `]
 })
 export class Videocontrols {
