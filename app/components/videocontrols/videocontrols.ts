@@ -5,7 +5,8 @@ import {Observable} from 'rxjs/Rx';
 export enum ActionType {
   RATE = 1,
   CROP = 2,
-  LOOP = 3
+  LOOP = 3,
+  STEP = 4
 };
 
 
@@ -56,6 +57,10 @@ export class Videocontrols {
   
   loop(){
     this.onAction.emit({type:ActionType.LOOP,value:this._loop});
+  }
+
+  step(){
+    this.onAction.emit({type:ActionType.STEP,value:0.1});
   }
   
   resetPlaybackRate(){

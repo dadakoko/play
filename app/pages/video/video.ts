@@ -81,6 +81,11 @@ export class VideoPage {
                 this.loop=action.value;
                 break;
             }
+            case ActionType.STEP:
+            {
+                this._videoRef.nativeElement.currentTime+=action.value;
+                break;
+            }
             default:
             {
                 alert("unknown action");
