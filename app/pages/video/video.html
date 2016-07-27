@@ -9,5 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <video controls src={{selectedVideo.attributes.videourl}} autoplay loop webkit-playsinline></video>
+  <video #videoRef loop controls src={{selectedVideo.attributes.videourl}} webkit-playsinline></video>
+  <videocontrols (onAction)="onClickVideoAction($event)"></videocontrols>
+  {{_videoRef.nativeElement.playbackRate}}
 </ion-content>

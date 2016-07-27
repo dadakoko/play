@@ -1,0 +1,45 @@
+<!--
+  Generated template for the Videocontrols component.
+
+  See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<ion-item>
+  <button clear small (click)="setPlaybackRate(3)">
+    <ion-icon name='ios-refresh' is-active="false"></ion-icon>
+  </button>
+  <ion-range min="5" max="20" step="1" pin="true" [(ngModel)]="speed" (ionChange)="setPlaybackRate()" secondary>
+    <ion-icon range-left small name="ios-speedometer"></ion-icon>
+    <ion-icon range-right name="ios-speedometer"></ion-icon>
+  </ion-range>
+  <button clear small (click)="setPlaybackRate(3)">
+    <ion-icon name='ios-refresh' is-active="false"></ion-icon>
+  </button>
+  <ion-range dualKnobs="true" pin="true" [(ngModel)]="crop" (ionChange)="setCrop()">
+    <ion-icon range-left small name="brush"></ion-icon>
+  </ion-range>
+</ion-item>
+
+<div class="outer">
+  <div class="inner">  <button clear small (click)="setPlaybackRate(1)">
+    <ion-icon name='ios-skip-backward' is-active="false"></ion-icon>
+  </button>
+  </div>
+  <div class="inner">  <button clear small (click)="setPlaybackRate(2)">
+    <ion-icon name='ios-rewind' is-active="false"></ion-icon>
+  </button>
+  </div>
+  <div class="inner">  <button clear small (click)="setPlaybackRate(3)">
+    <ion-icon name='ios-refresh' is-active="false"></ion-icon>
+  </button>
+  </div>
+  <div class="inner">  <button clear small (click)="setPlaybackRate(4)">
+    <ion-icon name='ios-fastforward' is-active="false"></ion-icon>
+  </button>
+  </div>
+  <div class="inner">  <button clear small (click)="setPlaybackRate(5)">
+    <ion-icon name='ios-skip-forward' is-active="false"></ion-icon>
+  </button>
+  </div>
+</div>

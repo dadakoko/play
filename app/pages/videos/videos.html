@@ -20,16 +20,7 @@
 </ion-menu>
 
 <ion-content padding #content>
-    <!--<ion-list [virtualScroll]="items">-->
-    <!--<ion-item  *virtualItem=" let item" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">-->
-    <!--<ion-thumbnail item-left>-->
-    <!--<div class="img_thumb" [style.background-image]="'url(' + item.attributes.thumbnailurl + ')'"></div>-->
-    <!--</ion-thumbnail>-->
-    <!--<h2>{{item.attributes.title}}</h2>-->
-    <!--<p>{{item.attributes.description}}</p>-->
-    <!--<button clear item-right>View</button>-->
-    <!--</ion-item>-->
-    <!--</ion-list>-->
+
     <ion-list [virtualScroll]="items | sortAsc:'title'" [headerFn]="myHeaderFn">
         <ion-item-divider *virtualHeader="let header">{{header}}</ion-item-divider>
         <ion-item *virtualItem="let item" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
@@ -42,6 +33,7 @@
         </ion-item>
     </ion-list>
 
+    <!-- can not use the code below bcause of known ionic bug https://github.com/driftyco/ionic/issues/6486-->
     <!--<ion-list>-->
     <!--<ion-item-group *ngFor="let group of items | sortAsc:'title'| groupBy:'title'">-->
     <!--<ion-item-divider>{{group.value}}</ion-item-divider>-->
@@ -63,7 +55,7 @@
 </ion-content>
 
 <ion-footer>
-    <button fab fab-bottom fab-center (click)="addVideo()">
+    <button fab fab-bottom fab-right (click)="addVideo()">
         <ion-icon name="add"></ion-icon>
     </button>
 </ion-footer>
