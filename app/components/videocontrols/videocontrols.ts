@@ -4,7 +4,8 @@ import {Observable} from 'rxjs/Rx';
 
 export enum ActionType {
   RATE = 1,
-  CROP = 2
+  CROP = 2,
+  LOOP = 3
 };
 
 
@@ -31,19 +32,42 @@ export class Videocontrols {
 
 
   speed: number;
-  crop: any = {lower: 0, upper: 60};
+  crop: any = {lower: 0, upper: 0};
+  _loop:boolean;
+  
+  @Input()
+  video:any
 
   @Output() onAction: EventEmitter<any> = new EventEmitter();
   
   constructor() {
   }
 
+  ngOnInit() {
+    this.crop.upper=this.video.duration*10;
+    this.speed=10;
+  }
+
+  resetCrop(){
+    this.crop ={lower:0,upper:this.video.duration*10};
+    this.setCrop();
+  }
+  
+  loop(){
+    this.onAction.emit({type:ActionType.LOOP,value:this._loop});
+  }
+  
+  resetPlaybackRate(){
+    this.speed=10;
+    this.setPlaybackRate();
+  }
+  
   setPlaybackRate(){
     this.onAction.emit({type:ActionType.RATE,value:this.speed/10});
   }
 
   setCrop(){
-    this.onAction.emit({type:ActionType.CROP,value:this.crop});
+    this.onAction.emit({type:ActionType.CROP,value:{lower: this.crop.lower/10, upper: this.crop.upper/10}});
   }
 
 }

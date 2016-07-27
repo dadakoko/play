@@ -21,9 +21,14 @@ export class VideoPage {
 
     selectedVideo:any;
     
-    @ViewChild("videoRef")
+    @ViewChild("myvideo")
     private _videoRef:ElementRef;
 
+    private isDurationSet;
+    private duration;
+
+    crop: any = {lower: 0, upper: 0};
+    loop:boolean;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -38,18 +43,42 @@ export class VideoPage {
     onClickBack() {
         this.nav.setRoot(this.routes.getPage(this.routes.VIDEOS))
     }
+    
+    onDuration(ev){
+        this.isDurationSet = !isNaN(ev.target.duration);
+        this.duration = ev.target.duration;
+        this.crop.upper = ev.target.duration;
+    }
+
+    onTimeUpdate(ev){
+        let currenttime = this._videoRef.nativeElement.currentTime;
+        let temptime = currenttime<this.crop.lower?this.crop.lower:currenttime;
+        let newtime = temptime>this.crop.upper?this.crop.lower:temptime;
+        if(newtime!=currenttime) {
+            this._videoRef.nativeElement.currentTime = newtime;
+        }
+        if(newtime!=temptime&&!this.loop){
+            this._videoRef.nativeElement.pause();
+            console.log(newtime);
+        }
+    }
 
     onClickVideoAction(action) {
 
         switch (action.type) {
             case ActionType.CROP:
             {
-                alert("Case CROP");
+                this.crop = action.value;
                 break;
             }
             case ActionType.RATE:
             {
                 this._videoRef.nativeElement.playbackRate = action.value;
+                break;
+            }
+            case ActionType.LOOP:
+            {
+                this.loop=action.value;
                 break;
             }
             default:

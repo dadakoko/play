@@ -9,7 +9,6 @@
 </ion-header>
 
 <ion-content>
-  <video #videoRef loop controls src={{selectedVideo.attributes.videourl}} webkit-playsinline></video>
-  <videocontrols (onAction)="onClickVideoAction($event)"></videocontrols>
-  {{_videoRef.nativeElement.playbackRate}}
+  <video #myvideo loop controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>
+  <videocontrols *ngIf="duration" [video]="myvideo" (onAction)="onClickVideoAction($event)"></videocontrols>
 </ion-content>
