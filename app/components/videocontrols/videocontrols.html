@@ -25,12 +25,29 @@
             <ion-icon name='ios-power' is-active="false"></ion-icon>
             crop
         </button>
-        <button clear small (click)="step()">
-            <ion-icon name='ios-eye' is-active="false"></ion-icon>
-            crop
-        </button>
         <ion-toggle clear small [(ngModel)]="_loop" (click)="loop()">
             loop
         </ion-toggle>
     </div>
 </div>
+
+<div class="outer">
+    <div class="inner">
+        <button clear small (click)="start()">
+            <ion-icon name='ios-rewind' is-active="false"></ion-icon>
+        </button>
+        <button clear small (click)="stepback()">
+            <ion-icon name='ios-skip-backward' is-active="false"></ion-icon>
+        </button>
+        <button clear small (click)="play()">
+            <ion-icon name='ios-play' is-active="false"></ion-icon>
+        </button>
+        <button clear small (click)="stepfor()">
+            <ion-icon name='ios-skip-forward' is-active="false"></ion-icon>
+        </button>
+        <button clear small (click)="end()">
+            <ion-icon name='ios-fastforward' is-active="false"></ion-icon>
+        </button>
+    </div>
+</div>
+

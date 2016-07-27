@@ -83,7 +83,19 @@ export class VideoPage {
             }
             case ActionType.STEP:
             {
+                this._videoRef.nativeElement.pause();
                 this._videoRef.nativeElement.currentTime+=action.value;
+                break;
+            }
+            case ActionType.PLAY:
+            {
+                this._videoRef.nativeElement.play();
+                break;
+            }
+            case ActionType.PAUSE:
+            {
+                this._videoRef.nativeElement.pause();
+                this._videoRef.nativeElement.currentTime=action.value;
                 break;
             }
             default:

@@ -9,6 +9,11 @@
 </ion-header>
 
 <ion-content>
-  <video #myvideo loop controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>
+  <video #myvideo controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>
   <videocontrols *ngIf="duration" [video]="myvideo" (onAction)="onClickVideoAction($event)"></videocontrols>
 </ion-content>
+
+
+<ion-footer>
+
+</ion-footer>
