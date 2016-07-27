@@ -32,6 +32,7 @@ export class VideosPage {
     base64Image:string;
     uploading:boolean = true;
     base64TempImage:string;
+    private originalItems;
 
 
     /** Not normally mandatory but create bugs if ommited. **/
@@ -44,6 +45,7 @@ export class VideosPage {
                 private auth:Auth) {
         this.videosProvider.load().then((data)=> {
             this.items = data;
+            this.originalItems = data;
         });
         this.username = this.auth.user.username;
     }
@@ -62,6 +64,20 @@ export class VideosPage {
 
     addVideo() {
         this.nav.insert(0, this.routes.getPage(this.routes.ADD))
+    }
+
+    getItems(ev) {
+
+        this.items= this.originalItems;
+        // set val to the value of the searchbar
+        let val = ev.target.value;
+
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.items = this.items.filter((item) => {
+                return (item.attributes.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
     }
 
 

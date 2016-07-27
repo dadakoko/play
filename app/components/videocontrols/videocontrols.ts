@@ -26,6 +26,7 @@ export enum ActionType {
             .inner
             {
                 display: inline-block;
+            }
     `]
 })
 export class Videocontrols {

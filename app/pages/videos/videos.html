@@ -21,6 +21,7 @@
 
 <ion-content padding #content>
 
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list [virtualScroll]="items | sortAsc:'title'" [headerFn]="myHeaderFn">
         <ion-item-divider *virtualHeader="let header">{{header}}</ion-item-divider>
         <ion-item *virtualItem="let item" (swipe)="deleteVideo(item)" (click)="openMenu($event,item)">
