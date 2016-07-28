@@ -6,6 +6,7 @@ import {Auth} from "../../providers/auth/auth";
 import {Camera, Transfer} from "ionic-native/dist/index";
 import {GroupBy} from "../../pipes/groupby";
 import {SortAsc} from "../../pipes/sortasc";
+import {TestpinchPage} from "../testpinch/testpinch";
 
 /*
  Generated class for the VideosPage page.
@@ -64,6 +65,7 @@ export class VideosPage {
 
     addVideo() {
         this.nav.insert(0, this.routes.getPage(this.routes.ADD))
+        // this.nav.insert(0, TestpinchPage)
     }
 
     getItems(ev) {

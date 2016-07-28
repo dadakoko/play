@@ -4,13 +4,17 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">-->
 <ion-header>
   <header-content title={{selectedVideo.attributes.title}} thumbnail={{selectedVideo.attributes.thumbnailurl}} backEnabled={{true}} (onBack)="onClickBack()"></header-content>
 </ion-header>
 
 <ion-content>
-  <video (tap)="tapEvent($event)" (swipe)="swipeEvent($event)" #myvideo controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>
+  <div style="position: relative">
+  <video style="position: absolute" #myvideo controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>
+  <!--<video (tap)="tapEvent($event)" (swipe)="swipeEvent($event)" (pinch)="pinchEvent($event)" #myvideo controls src={{selectedVideo.attributes.videourl}} webkit-playsinline (durationchange)="onDuration($event)" (timeupdate)="onTimeUpdate($event)"></video>-->
+  </div>
 </ion-content>
 
 <videocontrols *ngIf="duration" [video]="myvideo" (onAction)="onClickVideoAction($event)"></videocontrols>
