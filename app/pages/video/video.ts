@@ -1,5 +1,5 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Gesture} from 'ionic-angular';
 import {Routes} from '../../providers/routes/routes';
 import {Video} from "../../models/video.model";
 import {Auth} from "../../providers/auth/auth";
@@ -29,6 +29,8 @@ export class VideoPage {
 
     crop: any = {lower: 0, upper: 0};
     loop:boolean;
+    private _videoElement;
+    private _videoGesture;
 
     /** Not normally mandatory but create bugs if ommited. **/
     static get parameters() {
@@ -38,6 +40,30 @@ export class VideoPage {
     constructor(private nav:NavController, private params:NavParams, private routes:Routes, private videoProvider:VideosProvider) {
         const selectedId = params.data.id;
         this.selectedVideo = videoProvider.getVideoById(selectedId)
+    }
+
+    ionViewDidEnter() {
+        this._videoElement = this._videoRef.nativeElement;
+        this._videoGesture = new Gesture(this._videoElement);
+        this._videoGesture.listen();
+        this._videoGesture.on('panleft panright pantop pandown', (ev) => {
+            this._panMove(ev);
+        });
+    }
+    _panMove(ev) {
+        this._videoElement.style.marginLeft = ev.deltaX + 'px';
+    }
+
+    tapEvent(ev) {
+        this._videoElement.style.width = 200 + '%';
+    }
+
+    swipeEvent(ev){
+        this._videoElement.style.width = ev.deltaX + '%';
+    }
+
+    ngOnDestroy() {
+        this._videoGesture.destroy();
     }
 
     onClickBack() {
@@ -59,7 +85,6 @@ export class VideoPage {
         }
         if(newtime!=temptime&&!this.loop){
             this._videoRef.nativeElement.pause();
-            console.log(newtime);
         }
     }
 

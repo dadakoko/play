@@ -4,50 +4,55 @@
   See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
   for more info on Angular 2 Components.
 -->
-
-<ion-toggle clear small [(ngModel)]="_loop" (ionChange)="loop()">
-</ion-toggle>
-<ion-item class="sliders">
-    <ion-range min="5" max="20" step="1" pin="true" [(ngModel)]="speed" (ionChange)="setPlaybackRate()" secondary>
-        <ion-icon range-left small name="ios-speedometer"></ion-icon>
-        <ion-icon range-right name="ios-speedometer"></ion-icon>
-    </ion-range>
-    <ion-range style="width: 88%; margin-right: 38px" dualKnobs="true" pin="true" min="0" max={{video.duration*10}} [(ngModel)]="crop" (ionChange)="setCrop()">
-        <ion-icon range-left small name="ios-crop"></ion-icon>
-    </ion-range>
-</ion-item>
-
-
-<div class="outer">
-    <div class="inner">
-        <button clear small (click)="resetPlaybackRate()">
-            <ion-icon name='ios-power' is-active="false"></ion-icon>
-            motion
-        </button>
-        <button clear small (click)="resetCrop()">
-            <ion-icon name='ios-power' is-active="false"></ion-icon>
-            crop
-        </button>
+<div #mySliders class="footer-toggle">
+    <ion-toggle clear small center [(ngModel)]="_loop" (ionChange)="loop()">
+    </ion-toggle>
+    <ion-item class="sliders">
+        <ion-range min="5" max="20" step="1" pin="true" [(ngModel)]="speed" (ionChange)="setPlaybackRate()"
+                   secondary>
+            <ion-icon range-left small name="ios-speedometer"></ion-icon>
+            <ion-icon range-right name="ios-speedometer"></ion-icon>
+        </ion-range>
+        <ion-range dualKnobs="true" pin="true" min="0" max={{video.duration*10}} [(ngModel)]="crop"
+                   (ionChange)="setCrop()">
+            <ion-icon range-left small name="ios-crop"></ion-icon>
+            <ion-icon class="hidden-icon" range-right name="ios-crop"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <div class="outer">
+        <div class="inner">
+            <button clear small (click)="resetPlaybackRate()">
+                <ion-icon name='ios-power' is-active="false"></ion-icon>
+                motion
+            </button>
+            <button clear small (click)="resetCrop()">
+                <ion-icon name='ios-power' is-active="false"></ion-icon>
+                crop
+            </button>
+        </div>
     </div>
 </div>
-
-<div class="outer">
-    <div class="inner">
-        <button clear small (click)="start()">
-            <ion-icon name='ios-rewind' is-active="false"></ion-icon>
-        </button>
-        <button clear small (click)="stepback()">
-            <ion-icon name='ios-skip-backward' is-active="false"></ion-icon>
-        </button>
-        <button clear small (click)="play()">
-            <ion-icon name='ios-play' is-active="false"></ion-icon>
-        </button>
-        <button clear small (click)="stepfor()">
-            <ion-icon name='ios-skip-forward' is-active="false"></ion-icon>
-        </button>
-        <button clear small (click)="end()">
-            <ion-icon name='ios-fastforward' is-active="false"></ion-icon>
-        </button>
+<ion-footer style="background: white">
+    <div class="outer">
+        <div class="inner">
+            <button clear small (click)="start()">
+                <ion-icon name='ios-rewind' is-active="false"></ion-icon>
+            </button>
+            <button clear small (click)="stepback()">
+                <ion-icon name='ios-skip-backward' is-active="false"></ion-icon>
+            </button>
+            <button clear small (click)="play()">
+                <ion-icon name='ios-play' is-active="false"></ion-icon>
+            </button>
+            <button clear small (click)="stepfor()">
+                <ion-icon name='ios-skip-forward' is-active="false"></ion-icon>
+            </button>
+            <button clear small (click)="end()">
+                <ion-icon name='ios-fastforward' is-active="false"></ion-icon>
+            </button>
+            <button clear small (click)="toggleAction()">
+                <ion-icon name='md-more' is-active="false"></ion-icon>
+            </button>
+        </div>
     </div>
-</div>
-
+</ion-footer>

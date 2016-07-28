@@ -43,7 +43,7 @@ export class VideosPage {
     constructor(private platform:Platform, private nav:NavController,
                 private routes:Routes, private videosProvider:VideosProvider,
                 private auth:Auth) {
-        this.videosProvider.load().then((data)=> {
+        this.videosProvider.load(this.auth.user.userId).then((data)=> {
             this.items = data;
             this.originalItems = data;
         });

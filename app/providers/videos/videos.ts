@@ -21,9 +21,9 @@ export class Videos {
     this.data = null;
   }
 
-  load() {
+  load(id) {
     return new Promise(resolve => {
-      this.authHttp.get(this.endpoints.getVideos())
+      this.authHttp.get(this.endpoints.getVideos()+'?author='+id)
           .map(res => res.json())
           .subscribe(data => {
             this.data = data.data;
