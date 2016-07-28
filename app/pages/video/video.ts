@@ -49,8 +49,9 @@ export class VideoPage {
         this._videoElement.style.top = 0+'px';
 
         this.mc = new Hammer(this._videoElement);
-        
+
         this.mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+        this.mc.get('press').set({time:1000});
 
         this.mc.on("panstart panleft panright panup pandown tap press", (ev) => {
             switch (ev.type) {
@@ -62,8 +63,12 @@ export class VideoPage {
                     this.pan(ev);
                     break;
                 case "tap":
-                case "press":
                     this.tap(ev);
+                    break;
+                case "press":
+                    this._videoElement.style.width = 100+'%';
+                    this._videoElement.style.left = 0+'px';
+                    this._videoElement.style.top = 0+'px';
                     break;
                 default:
                     console.log("unused ev ", ev.type);
@@ -84,11 +89,17 @@ export class VideoPage {
                 break;
             case "panleft":
             case "panright":
-                this._videoElement.style.left = this.left + ev.deltaX + 'px';
+                let newX = this.left + ev.deltaX;
+                newX = (newX > 0) ? 0 : newX;
+                newX = (newX < - this._videoElement.clientWidth + window.innerWidth) ? - this._videoElement.clientWidth + window.innerWidth : newX;
+                this._videoElement.style.left = newX + 'px';
                 break;
             case "panup":
             case "pandown":
-                this._videoElement.style.top = this.top + ev.deltaY + 'px';
+                let newY = this.top + ev.deltaY;
+                newY = (newY > 0) ? 0 : newY;
+                newY = (newY < - this._videoElement.clientHeight + window.innerHeight) ? - this._videoElement.clientHeight + window.innerHeight : newY;
+                this._videoElement.style.top = newY + 'px';
                 break;
             default:
                 console.log("unused ev ", ev.type);
@@ -97,8 +108,6 @@ export class VideoPage {
     }
 
     tap(ev) {
-        let { pointers} = ev;
-        console.log('tap count : ', JSON.stringify(pointers));
         this._videoElement.style.width = parseInt(this._videoElement.style.width.split('%')[0])+10 + '%';
         ev.preventDefault();
     }
